@@ -3,17 +3,17 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
 //register
-exports.registerController = async(req,res) => {
+exports.registerController = async (req,res) => {
     console.log("Inside registerController");
     const {username,email,password} = req.body
     try{
         const existingUser = await users.findOne({email})
         if(existingUser){
-            res.status(409).json("User already exists.... Please Login!!!")
+            res.status(406).json("User already exists.... Please Login!!!")
         }else{
             const encrptPassword = await bcrypt.hash(password,10)
             const newUser = new users({
-                username,email,password : encrptPassword,profile : ""
+                username,email,password:encrptPassword,profile:""
             })
             await newUser.save()
             res.status(200).json(newUser)
@@ -35,6 +35,7 @@ exports.loginController = async(req,res) => {
             if(userLoggedIn){
                 const token = jwt.sign({email,role:existingUser.role}, process.env.JWTSECRET)
                 res.status(200).json({user:existingUser,token})
+                alert("Login Successful")
             }else{
                 res.status(401).json("Invalid Password")
             }
