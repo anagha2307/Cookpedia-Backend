@@ -7,7 +7,7 @@ const jwtMiddleware = (req, res, next) => {
         try {
             const jwtResponse = jwt.verify(token, process.env.JWTSECRET)
             req.role = jwtResponse.role
-            req.payload = jwtMiddleware.email
+            req.payload = jwtResponse.email
             next()
         }
         catch(err){

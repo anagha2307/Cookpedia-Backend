@@ -13,7 +13,6 @@ exports.getAllRecipeController = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 }
-
 //view recipe
 exports.viewRecipeController = async (req,res) => {
     console.log("Inside viewRecipeController");
