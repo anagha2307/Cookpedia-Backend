@@ -18,6 +18,8 @@ routes.get('/recipes/:id/view',jwtMiddleware,recipeController.viewRecipeControll
 routes.get('/related-recipes',jwtMiddleware,recipeController.getRelatedRecipesController)
 //add to download
 routes.put('/recipes/:id/download',jwtMiddleware,downloadController.addDownloadController)
+//get downloaded recipes
+routes.get('/recipes/downloaded',jwtMiddleware,downloadController.getDownloadRecipeController)
 //save recipe
 routes.post('/recipes/:id/save',jwtMiddleware,saveRecipeController.addToCollectionController)
 //get saved recipes

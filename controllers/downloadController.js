@@ -32,3 +32,16 @@ exports.addDownloadController = async (req,res) => {
         res.status(500).json(err)
     }  
 }
+
+//get downloaded recipes
+exports.getDownloadRecipeController = async (req,res) => {
+    console.log("getDownloadRecipeController");
+    const userMail = req.payload
+    try{
+        const downloadRecipes = await downloads.find({userMail})
+        res.status(200).json(downloadRecipes)
+    }
+    catch(err){
+        res.status(500).json(err)
+    }
+}
