@@ -11,9 +11,9 @@ exports.registerController = async (req,res) => {
         if(existingUser){
             res.status(406).json("User already exists.... Please Login!!!")
         }else{
-            const encrptPassword = await bcrypt.hash(password,10)
+            const encryptPassword = await bcrypt.hash(password,10)
             const newUser = new users({
-                username,email,password:encrptPassword,profile:""
+                username,email,password:encryptPassword,profile:""
             })
             await newUser.save()
             res.status(200).json(newUser)
@@ -22,7 +22,6 @@ exports.registerController = async (req,res) => {
         res.status(500).json(err)
     }
 }
-
 //login
 exports.loginController = async(req,res) => {
     console.log('Inside loginController');
@@ -47,4 +46,22 @@ exports.loginController = async(req,res) => {
         console.log(err);
         res.status(500).json(err)      
     }    
+}
+//update profile
+exports.updateProfileController = async(req,res) => {
+    console.log("Inside updateProfileController");
+    const {username,password,profile} = req.body
+    const {id} = req.params
+    try{
+        const existingUser = await users.findById({_id:id})
+        existingUser.username = username
+        existingUser.profile = profile
+        const encryptPassword = await bcrypt.hash(password,10)
+        existingUser.password = encryptPassword
+        await existingUser.save()
+        res.status(200).json(existingUser)
+    }
+    catch(err){
+        res.status(500).json(err)
+    }
 }

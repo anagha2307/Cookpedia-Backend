@@ -26,5 +26,7 @@ routes.post('/recipes/:id/save',jwtMiddleware,saveRecipeController.addToCollecti
 routes.get('/recipes/saved',jwtMiddleware,saveRecipeController.getSavedRecipesController)
 //delete saved recipe
 routes.delete('/saved-recipes/:id/delete',jwtMiddleware,saveRecipeController.deleteSavedRecipeController)
+//edit user profile
+routes.put('/users/:id/edit',jwtMiddleware,userController.updateProfileController)
 
 module.exports = routes
