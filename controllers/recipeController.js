@@ -9,7 +9,6 @@ exports.getAllRecipeController = async (req, res) => {
     }
     catch (error) {
         //res.status(500).json(error)
-        console.error("Controller Crash:", error);
         res.status(500).json({ error: error.message });
     }
 }

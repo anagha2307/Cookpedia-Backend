@@ -5,6 +5,7 @@ const jwtMiddleware = require('../middleware/jwtMiddleware')
 const downloadController = require('../controllers/downloadController')
 const saveRecipeController = require('../controllers/saveRecipeController')
 const feedbackController = require('../controllers/feebackController')
+const adminJwtMiddleware = require('../middleware/adminJwtMiddleware')
 const routes = express.Router()
 
 //get all recipes
@@ -31,5 +32,9 @@ routes.delete('/saved-recipes/:id/delete',jwtMiddleware,saveRecipeController.del
 routes.put('/users/:id/edit',jwtMiddleware,userController.updateProfileController)
 //add feedback
 routes.post('/user/feedback',feedbackController.addFeedbackController)
+//get all users
+routes.get('/users',adminJwtMiddleware,userController.getAllUsersController)
+//get download list
+routes.get('/download-list',adminJwtMiddleware,downloadController.getDownloadListController)
 
 module.exports = routes

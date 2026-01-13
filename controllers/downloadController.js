@@ -1,4 +1,4 @@
-const downloads = require('../models/downloadModel')
+const downloads = require('../models/downloadModel');
 
 //add to download
 exports.addDownloadController = async (req,res) => {
@@ -44,4 +44,15 @@ exports.getDownloadRecipeController = async (req,res) => {
     catch(err){
         res.status(500).json(err)
     }
+}
+//get download list
+exports.getDownloadListController = async (req,res) => {
+    console.log("Inside getDownloadListController");
+    try{
+        const allDownloads = await downloads.find()
+        res.status(200).json(allDownloads)
+    }
+    catch(err){
+        res.status(500).json(err)
+    } 
 }
