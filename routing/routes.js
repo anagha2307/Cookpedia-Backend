@@ -29,12 +29,14 @@ routes.post('/recipes/:id/save',jwtMiddleware,saveRecipeController.addToCollecti
 routes.get('/recipes/saved',jwtMiddleware,saveRecipeController.getSavedRecipesController)
 //delete saved recipe
 routes.delete('/saved-recipes/:id/delete',jwtMiddleware,saveRecipeController.deleteSavedRecipeController)
+
 //edit user profile
 routes.put('/users/:id/edit',jwtMiddleware,userController.updateProfileController)
 //add feedback
 routes.post('/user/feedback',feedbackController.addFeedbackController)
 //get approved feedback list
 routes.get('/user/feedbacks/approved',feedbackController.getApprovedFeedbacksController)
+
 //admin
 //get all users
 routes.get('/users',adminJwtMiddleware,userController.getAllUsersController)
