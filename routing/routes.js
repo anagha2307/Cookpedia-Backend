@@ -48,5 +48,9 @@ routes.get('/feedbacks',adminJwtMiddleware,feedbackController.getFeedbacklistCon
 routes.put('/feedbacks/:id/edit',adminJwtMiddleware,feedbackController.updateFeedbackStatusController)
 //add recipe
 routes.post('/add-recipe',adminJwtMiddleware,recipeController.addRecipeController)
+//add recipe
+routes.delete('/recipes/:id/delete',adminJwtMiddleware,recipeController.removeRecipeController)
+
+
 
 module.exports = routes
