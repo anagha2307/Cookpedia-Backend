@@ -70,3 +70,20 @@ exports.removeRecipeController = async (req, res) => {
         res.status(500).json(err)
     }
 }
+//update recipe
+exports.updateRecipeController = async (req, res) => {
+    console.log("updateRecipeController");
+    const { name, ingredients, instructions, prepTimeMinutes, cookTimeMinutes, servings, difficulty, cuisine,
+        caloriesPerServing, image, mealType } = req.body
+    const {id} = req.params
+    try {
+        const updateRecipe = await recipes.findByIdAndUpdate({_id:id},{
+                name, ingredients, instructions, prepTimeMinutes, cookTimeMinutes, servings, difficulty, cuisine, caloriesPerServing, image, mealType
+            },{new:true})
+            await updateRecipe.save()
+            res.status(200).json(updateRecipe)
+    }
+    catch (error) {
+        res.status(500).json(error)
+    }
+}

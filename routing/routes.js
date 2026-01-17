@@ -50,7 +50,8 @@ routes.put('/feedbacks/:id/edit',adminJwtMiddleware,feedbackController.updateFee
 routes.post('/add-recipe',adminJwtMiddleware,recipeController.addRecipeController)
 //add recipe
 routes.delete('/recipes/:id/delete',adminJwtMiddleware,recipeController.removeRecipeController)
-
+//update recipe
+routes.put('/recipes/:id/update',adminJwtMiddleware,recipeController.updateRecipeController)
 
 
 module.exports = routes
