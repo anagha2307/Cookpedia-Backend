@@ -4,7 +4,7 @@ const userController = require('../controllers/userController')
 const jwtMiddleware = require('../middleware/jwtMiddleware')
 const downloadController = require('../controllers/downloadController')
 const saveRecipeController = require('../controllers/saveRecipeController')
-const feedbackController = require('../controllers/feebackController')
+const feedbackController = require('../controllers/feedbackController')
 const adminJwtMiddleware = require('../middleware/adminJwtMiddleware')
 const routes = express.Router()
 

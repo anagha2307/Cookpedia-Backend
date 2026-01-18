@@ -34,7 +34,6 @@ exports.loginController = async (req, res) => {
             if (userLoggedIn) {
                 const token = jwt.sign({ email, role: existingUser.role }, process.env.JWTSECRET)
                 res.status(200).json({ user: existingUser, token })
-                alert("Login Successful")
             } else {
                 res.status(401).json("Invalid Password")
             }
@@ -43,7 +42,7 @@ exports.loginController = async (req, res) => {
         }
     }
     catch (err) {
-        console.log(err);
+        console.log(err.message); 
         res.status(500).json(err)
     }
 }
