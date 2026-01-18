@@ -41,11 +41,13 @@ routes.get('/user/feedbacks/approved',feedbackController.getApprovedFeedbacksCon
 //get all users
 routes.get('/users',adminJwtMiddleware,userController.getAllUsersController)
 //get download list
-routes.get('/download-list',adminJwtMiddleware,downloadController.getDownloadListController)
+routes.get('/download-list',jwtMiddleware,downloadController.getDownloadListController)
 //get feedback list
 routes.get('/feedbacks',adminJwtMiddleware,feedbackController.getFeedbacklistController)
 //update feedback status
 routes.put('/feedbacks/:id/edit',adminJwtMiddleware,feedbackController.updateFeedbackStatusController)
+//delete feedback
+routes.delete('/feedbacks/:id/delete',adminJwtMiddleware,feedbackController.removeFeedbackController)
 //add recipe
 routes.post('/add-recipe',adminJwtMiddleware,recipeController.addRecipeController)
 //add recipe

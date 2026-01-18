@@ -52,3 +52,15 @@ exports.getApprovedFeedbacksController = async (req,res) => {
         res.status(500).json(err)
     }
 }
+//remove feedback
+exports.removeFeedbackController = async (req, res) => {
+    console.log("Inside removeFeedbackController");
+    const { id } = req.params
+    try {
+        const feedback = await feedbacks.findByIdAndDelete({ _id: id })
+        res.status(200).json(feedback)
+    }
+    catch (err) {
+        res.status(500).json(err)
+    }
+}
